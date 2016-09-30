@@ -172,6 +172,13 @@ const taxonomies = {
 };
 /* eslint-enable */
 
+/**
+ * @return {Object} [taxonomies][terms]
+ */
+export function getTaxonomies( ) {
+  return taxonomies;
+}
+
 let termTable;
 
 /**
