@@ -14,6 +14,7 @@ import {
 	omit,
 	property,
 } from 'lodash';
+import debugFactory from 'debug';
 
 /**
  * Internal dependencies
@@ -30,6 +31,7 @@ import {
 	targetForSlug
 } from './positioning';
 
+const debug = debugFactory( 'calypso:guided-tours' );
 const contextTypes = Object.freeze( {
 	branching: PropTypes.object.isRequired,
 	next: PropTypes.func.isRequired,
@@ -148,6 +150,7 @@ export class Step extends Component {
 	}
 
 	quitIfInvalidRoute( props, context ) {
+		debug( 'Step.quitIfInvalidRoute' );
 		const { step, branching, lastAction } = context;
 		const stepBranching = branching[ step ];
 		const hasContinue = !! stepBranching.continue;
@@ -156,12 +159,18 @@ export class Step extends Component {
 		if ( ( ! hasContinue ) && isRouteSet &&
 				this.isDifferentSection( lastAction.path ) ) {
 			defer( () => {
+				debug( 'Step.quitIfInvalidRoute: quitting!' );
+				debug( hasContinue, isRouteSet, lastAction, this.isDifferentSection( lastAction.path ) );
 				this.context.quit();
 			} );
+		} else {
+			debug( 'Step.quitIfInvalidRoute: NOT quitting!' );
+			debug( hasContinue, isRouteSet, lastAction, this.isDifferentSection( lastAction.path ) );
 		}
 	}
 
 	isDifferentSection( path ) {
+		debug( 'isDifferentSection', this.section, path );
 		return this.section && path &&
 			this.section !== this.pathToSection( path );
 	}
@@ -311,11 +320,13 @@ export class Continue extends Component {
 	}
 
 	quitIfInvalidRoute( props ) {
+		debug( 'Continue.quitIfInvalidRoute' );
 		defer( () => {
 			const quit = this.context.quit;
 			const target = targetForSlug( props.target );
 			// quit if we have a target but cant find it
 			if ( props.target && ! target ) {
+				debug( 'Continue.quitIfInvalidRoute: quitting!' );
 				quit();
 			}
 		} );
