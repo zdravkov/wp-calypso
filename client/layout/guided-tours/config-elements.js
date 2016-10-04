@@ -71,7 +71,7 @@ export class Tour extends Component {
 	}
 
 	render() {
-		const { children, isValid, lastAction, stepName } = this.props;
+		const { children, stepName } = this.props;
 		const nextStep = find( children, stepComponent =>
 			stepComponent.props.name === stepName );
 		const isLastStep = nextStep === children[ children.length - 1 ];
@@ -80,7 +80,7 @@ export class Tour extends Component {
 			return null;
 		}
 
-		return React.cloneElement( nextStep, { isLastStep, isValid, lastAction } );
+		return React.cloneElement( nextStep, { isLastStep } );
 	}
 }
 
