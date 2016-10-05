@@ -43,7 +43,7 @@ const EmptyPlaceholder = React.createClass( {
 					context: 'Menus: item search/listing results',
 					comment: 'Used when no posts match the given search, or if there are no posts at all.',
 					components: {
-						a: <a className="create-link" href={ this.props.createLink } target="_blank" rel="noopener noreferrer" />
+						a: <a className="create-link" href={ this.props.createLink } />
 					}
 				} );
 			case 'page':
@@ -51,7 +51,7 @@ const EmptyPlaceholder = React.createClass( {
 					context: 'Menus: item search/listing results',
 					comment: 'Used when no pages match the given search, or if there are no pages at all.',
 					components: {
-						a: <a className="create-link" href={ this.props.createLink } target="_blank" rel="noopener noreferrer" />
+						a: <a className="create-link" href={ this.props.createLink } />
 					}
 				} );
 			default:
@@ -59,7 +59,7 @@ const EmptyPlaceholder = React.createClass( {
 					context: 'Menus: item search/listing results',
 					comment: 'Used when no results are found for the given search, or if there are no results of the given item type.',
 					components: {
-						a: <a className="create-link" href={ this.props.createLink } target="_blank" rel="noopener noreferrer" />
+						a: <a className="create-link" href={ this.props.createLink } />
 					}
 				} );
 		}
