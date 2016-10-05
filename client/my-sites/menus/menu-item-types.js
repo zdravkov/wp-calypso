@@ -80,7 +80,7 @@ MenuItemTypes.prototype.initializeDefaultTypes = function() {
 				show: true,
 				label: i18n.translate( 'Page' ),
 				notFoundLabel: i18n.translate( 'No pages found.' ),
-				createLink: '//wordpress.com/page/' + this.site.ID  + '/new',
+				createLink: '/page/' + this.site.ID + '/new',
 				gaEventLabel: 'Page'
 			},
 			{
@@ -133,7 +133,7 @@ MenuItemTypes.prototype.initializeDefaultTypes = function() {
 				show: true,
 				label: i18n.translate( 'Post' ),
 				notFoundLabel: i18n.translate( 'No posts found.' ),
-				createLink: '//wordpress.com/post/' + this.site.ID  + '/new',
+				createLink: '/post/' + this.site.ID + '/new',
 				gaEventLabel: 'Post'
 			}
 	];
