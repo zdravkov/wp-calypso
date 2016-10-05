@@ -2,14 +2,6 @@
  * External dependencies
  */
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { endsWith } from 'lodash';
-
-/**
- * Internal dependencies
- */
-import { getPostTypes } from 'state/post-types/selectors';
-import { getSelectedSiteId } from 'state/ui/selectors';
 
 /**
  * Component
@@ -74,25 +66,7 @@ const EmptyPlaceholder = React.createClass( {
 	},
 
 	noOptionsMessage() {
-		if ( this.props.typeFamily === 'post_type' ) {
-			const postTypes = this.props.postTypes;
-			if ( postTypes[ this.props.typeName ] && postTypes[ this.props.typeName ].labels.not_found ) {
-				let message = postTypes[ this.props.typeName ].labels.not_found;
-				if ( ! endsWith( message, '.' ) ) {
-					message += '.';
-				}
-				return message;
-			}
-		}
-
-		switch ( this.props.typeName ) {
-			case 'category':
-				return this.translate( 'No categories found.' );
-			case 'post_tag':
-				return this.translate( 'No tags found.' );
-			default:
-				return this.translate( 'Nothing found.' );
-		}
+		return this.props.notFoundLabel;
 	},
 
 	noSearchResultsMessage() {
@@ -107,19 +81,10 @@ const EmptyPlaceholder = React.createClass( {
 					: this.noOptionsMessage()
 				}
 				&nbsp;
-				{ this.props.typeName !== 'post_tag'
-					? this.createOptionMessage()
-					: null
-				}
+				{ this.props.typeName !== 'post_tag' && this.createOptionMessage() }
 			</span>
 		);
 	},
 } );
 
-export default connect(
-	state => {
-		return {
-			postTypes: getPostTypes( state, getSelectedSiteId( state ) )
-		};
-	}
-)( EmptyPlaceholder );
+export default EmptyPlaceholder;
