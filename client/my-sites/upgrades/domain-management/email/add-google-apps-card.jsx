@@ -169,7 +169,7 @@ const AddGoogleAppsCard = React.createClass( {
 			<Button
 				type="button"
 				onClick={ this.goToAddGoogleApps }>
-				{ this.translate( 'Add Google Apps' ) }
+				{ this.translate( 'Add G Suite' ) }
 			</Button>
 		);
 	},
