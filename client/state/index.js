@@ -99,7 +99,8 @@ const middleware = [ thunkMiddleware, noticesMiddleware, postsEditMiddleware ];
 if ( typeof window === 'object' ) {
 	// Browser-specific middlewares
 	middleware.push(
-		require( './analytics/middleware.js' ).analyticsMiddleware
+		require( './analytics/middleware.js' ).analyticsMiddleware,
+		require( './data-layer/wpcom-api-middleware.js' ).middleware,
 	);
 }
 
