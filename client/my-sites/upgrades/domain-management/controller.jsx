@@ -258,13 +258,13 @@ module.exports = {
 
 	domainManagementAddGoogleApps( pageContext ) {
 		setTitle(
-			i18n.translate( 'Add G Suite' ),
+			i18n.translate( 'Add Google Apps' ),
 			pageContext
 		);
 
 		analytics.pageView.record(
 			paths.domainManagementAddGoogleApps( ':site', pageContext.params.domain ? ':domain' : undefined ),
-			'Domain Management › Add G Suite'
+			'Domain Management › Add Google Apps'
 		);
 
 		renderWithReduxStore(
