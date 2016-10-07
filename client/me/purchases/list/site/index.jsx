@@ -14,6 +14,7 @@ import SectionHeader from 'components/section-header';
 
 const PurchasesSite = ( { isPlaceholder, name, purchases, slug } ) => {
 	let items, label = name;
+	const siteUrl = slug && slug.replace( /::/g, '/' );
 
 	if ( isPlaceholder ) {
 		items = times( 2, index => (
@@ -34,7 +35,7 @@ const PurchasesSite = ( { isPlaceholder, name, purchases, slug } ) => {
 	return (
 		<div className={ classNames( 'purchases-site', { 'is-placeholder': isPlaceholder } ) }>
 			<SectionHeader label={ label }>
-				<span className="purchases-site__slug">{ slug }</span>
+				<span className="purchases-site__slug">{ siteUrl }</span>
 			</SectionHeader>
 
 			{ items }
