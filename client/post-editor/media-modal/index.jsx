@@ -403,6 +403,7 @@ module.exports = React.createClass( {
 						selectedIndex={ this.getDetailSelectedIndex() }
 						onImageEditorClose={ this.onImageEditorClose }
 						onImageEditorCancel={ this.onImageEditorCancel }
+						contentClasses="editor-media-modal__content"
 					/>
 				);
 				break;

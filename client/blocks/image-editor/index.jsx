@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { noop } from 'lodash';
 import path from 'path';
 import { localize } from 'i18n-calypso';
+import classNames from 'classnames';
 
 /**
  * Internal dependencies
@@ -40,7 +41,9 @@ const ImageEditor = React.createClass( {
 		title: PropTypes.string,
 		translate: PropTypes.func,
 		onImageEditorClose: PropTypes.func,
-		onImageEditorCancel: PropTypes.func
+		onImageEditorCancel: PropTypes.func,
+		classes: PropTypes.string,
+		contentClasses: PropTypes.string
 	},
 
 	getDefaultProps() {
@@ -178,12 +181,22 @@ const ImageEditor = React.createClass( {
 	},
 
 	render() {
+		const classes = classNames(
+			'image-editor',
+			this.props.classes
+		);
+
+		const contentClasses = classNames(
+			'image-editor__content',
+			this.props.contentClasses
+		);
+
 		return (
-			<div className="image-editor">
+			<div className={ classes }>
 				{ this.state.canvasError && this.renderError() }
 
 				<figure>
-					<div className="image-editor__content">
+					<div className={ contentClasses }>
 						<ImageEditorCanvas
 							ref="editCanvas"
 							onLoadError={ this.onLoadCanvasError }
